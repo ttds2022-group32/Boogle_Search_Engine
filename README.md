@@ -181,9 +181,20 @@ To demonstrate the capabilities of Boogle, we have prepared a complete user stor
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.004.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.005.jpeg)
 
-2. The user types the desired content they want to search in the Search bar. Then they either click the Search button on the right of the search bar or press Enter key to search. In the user story, we use “Conan Doyle”.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.006.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.007.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
-3. The webpage will reload and send back the items that match. In “Conan Doyle” ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by  Conan Doyle.
-3. If the user comes across some network problems, the search engine will load the ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.008.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.009.jpeg)404 Not Found Page.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
+2. The user types the desired content they want to search in the Search bar. Then they either click the Search button on the right of the search bar or press Enter key to search. In the user story, we use “Conan Doyle”.
+
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.006.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.007.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
+
+3. The webpage will reload and send back the items that match. In “Conan Doyle” 
+
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by  Conan Doyle.
+
+3. If the user comes across some network problems, the search engine will load the 
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.008.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.009.jpeg)
+
+404 Not Found Page.
+
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.010.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.011.jpeg)
 
@@ -203,4 +214,3 @@ To demonstrate the capabilities of Boogle, we have prepared a complete user stor
 We added a functionality to the search page that displays a random author name and will change it daily. If you click on the author's name, the author's name will display in the search field. The search engine will direct you to the author's wikipedia entry if you click on the "wikipedia". If you click the "I'm feeling lucky" button, the search engine will reload a name.  The assumption is that this author maintains a wiki page.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.018.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.019.png)
-15

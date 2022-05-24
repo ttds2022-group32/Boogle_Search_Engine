@@ -38,7 +38,7 @@ As stated above, we decide to use a more modern approach to design the front end
 
 Figure 1. Diagram of Boogle Searching Engine![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-2. **Data Cleaning & Text Preprocessing**
+5.2.**Data Cleaning & Text Preprocessing**
 
 Due to the fact that the data is retrieved directly from the HTML source code, several record fields are structured incorrectly and include useless data. We begin by cleaning the data using Python's built-in string techniques to eliminate all occurrences of escape characters such as "\n", "\r", and so on. Additionally, we extract the published date from the string "2008-06-27T00:00:00+00:00" and save it as a Python DateTime object. We then execute text-preprocessing on our data to prepare it for search engine indexing, such as tokenization, stop word removal, and stemming.
 
@@ -50,7 +50,7 @@ We delete stop words from the list of tokens using a premade English word list f
 
 We utilise the PorterStemmer function from the NLTKPython library (Lop[er and Bird, 2002) ](https://www.zotero.org/google-docs/?JlrLVI)to reduce morphological variants of words to a single stem. For instance, this collection of tokens ['connection', 'connected', 'connects', 'connecting'] will be returned as ['connect', 'connect', 'connect', 'connect'].
 
-3. **Database**
+5.3.**Database**
 
 **MongoDB and PyMongo** MongoDB, a document-oriented database, is chosen as the database for this search engine because it combines extensive query and analytical capabilities with ease of installation. Additionally, there is a Python distribution that includes tools for interacting with it, which makes database modification relatively simple.
 
@@ -102,19 +102,19 @@ Same as the inverted list, the first key is the token and the value is a diction
 
 These two lists are used for scoring the queries.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-5. **Query processing**
+5.5.**Query processing**
 
 Once the backend receives a query string, such as “Shelock holmse”, the query is autocorrected by a spelling checker to “Sherlock holmes” or expanded to appropriate author name depends on query. and it sends the query to the query parser. The parser transforms the query into two token lists: the first one is a preprocessed tokens using the same procedure as described in the preprocessing part of this document. The second is a list of  tokens without preprocessing to perform an exact field search.
 
-6. **Building indexes on disk with SPIMI**
+5.6.**Building indexes on disk with SPIMI**
 
 One problem with large datasets is that the produced inverted list and field list are also too large to be in memory. Therefore, we build the indexes using the SPIMImethod (Manni[ng, Raghavan and Schütze, 2009) w](https://www.zotero.org/google-docs/?yK3KSR)ith modification. The SPIMI method makes a single pass of the document and produces dynamic posting lists that could grow in size. It then sorts and stores the posting lists to disk when the memory is full. After the single pass, SPIMImerges the files generated on disk to a single inverted index by reading each of the files line by line, so the processing could fit in the memory of a single computer. We modified SPIMIso that when the memory is full, the algorithm writes to MongoDB and merges the posting lists directly if the posting list is already in MongoDB.
 
-7. **Loading indexes back to memory**
+5.7.**Loading indexes back to memory**
 
 Indexing this large also cannot fit into the memory of a single instance. Therefore, we implement an index queue that loads only part of the indexes. When new queries come in and the memory reaches a threshold, the system pops the oldest node. The index queue can also be easily modified to use other cache replacement policies such as LRU.
 
-8. **Document retrieval and Ranking**
+5.8.**Document retrieval and Ranking**
 
 After the query is processed, first the list of tokens goes through the field index to check if the token is in our whole token dictionaries. If all tokens in the query are not found, just return search not find. If any token exists, start the scoring depending on their field.
 
@@ -132,7 +132,7 @@ Field Search: For each token in the query, check if the token occurs in that fie
 
 The system collects all results returned by phrase search and is given a fixed score because it will be an exact match, top 20 results from TFIDF, 5 results from title field search and 5 results from author field search. Then the system would sum up the same documents’ scores and remove repeated documents and sort by sum up scores.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-**Group members’ contribution![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
+## **Group members’ contribution![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
 
 Everyone is quite active and engaged throughout the duration of the project. We held the weekly meeting, and no one was absent from any meeting. Generally, each team member was assigned the same amount of work. All tasks have been completed to this point, and the search engine should function normally. If you come across any difficulties getting connected to the website or have any confusion on the functionalities, please send an email to [J.Sun-27@sms.ed.ac.uk (](mailto:J.Sun-27@sms.ed.ac.uk)Ivan) or [M.Sato-4@sms.ed.ac.uk (](mailto:M.Sato-4@sms.ed.ac.uk)Michitatsu).
 
@@ -160,7 +160,7 @@ Yuanting Mao (Fullstack)
 
 Attended the weekly meeting on time. Collaborated with *Michitatsu Sato* and *Ivan Sun* on components implementation and debugging on the frontend. With *Michitatsu Sato* on the backend on migration to FastAPIand debugging communication issues. With *Zhonghao Wen* on integration with various searching algorithms, SPIMI indexing and implementation of index queue. With *Zhi Qi Lee* and *Yue Wang* on communication between the backend and the database. In addition, he set up the server online with the rest of the team and made sure the data flow correctly by debugging various problems such as memory overflow and exceptions on both frontend and backend during the development of the project.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-**Reference![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
+## **Reference![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
 
 [Loper, E. and Bird, S. (2002). NLTK: The Natural Language Toolkit. *arXiv:cs/0205028*. \[Online\]. Available at: http://arxiv.org/abs/cs/0205028 \[Accessed 14 March 2022\].](https://www.zotero.org/google-docs/?m1KoIy)
 
@@ -170,7 +170,7 @@ Attended the weekly meeting on time. Collaborated with *Michitatsu Sato* and *Iv
 
 [*Project Gutenberg*. \[Online\]. Available at: https://www.gutenberg.org/ \[Accessed 11 March 2022\].](https://www.zotero.org/google-docs/?m1KoIy)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-**Appendix A: User Story![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
+## **Appendix A: User Story![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
 
 To demonstrate the capabilities of Boogle, we have prepared a complete user story for you to follow. We listed all probable user statuses, beginning with the initial connection to the website and ending with the user's choosing to exit the website.
 
@@ -186,10 +186,8 @@ To demonstrate the capabilities of Boogle, we have prepared a complete user stor
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by  Conan Doyle.
 
-3. If the user comes across some network problems, the search engine will load the 
+3. If the user comes across some network problems, the search engine will load the 404 Not Found Page. 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.008.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.009.jpeg)
-
-404 Not Found Page.
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 

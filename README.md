@@ -1,4 +1,4 @@
-*Text Technologies for Data Science — Book Content Search Engine —BOOGLE*
+# Text Technologies for Data Science — Book Content Search Engine —BOOGLE
 
 **Environment**
 - React

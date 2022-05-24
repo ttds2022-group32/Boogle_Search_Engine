@@ -185,12 +185,11 @@ To demonstrate the capabilities of Boogle, we have prepared a complete user stor
 
 3.The webpage will reload and send back the items that match. In “Conan Doyle” 
 
-![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by  Conan Doyle.
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by Conan Doyle.
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.008.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.009.jpeg)
 
 4.If the user comes across some network problems, the search engine will load the 404 Not Found Page. 
-
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.010.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.011.jpeg)

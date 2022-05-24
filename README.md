@@ -84,7 +84,8 @@ However, some of the original format is not that convenient for subsequent analy
 |***author***|<p>Separate into two sub-fields, name and the years of birth and death for the author. And if the information is not given or “unknown”, save it as an empty string.</p><p>EXAMPLE:  {'name': “Charles Dickens”,'year':”1812-1870”}.</p>|
 |***year***|Use datetime objects in Python instead of the original string.|
 |***tokens***|A new field which will be added after pre-processing. It saves a list of strings.|
-4. **Inverted List and Field List**
+
+5.4.**Inverted List and Field List**
 
 After each document is preprocessed and stored in MongoDB, our model creates two indexes from token lists: an inverted index and an index for performing field searches.
 
@@ -174,35 +175,37 @@ Attended the weekly meeting on time. Collaborated with *Michitatsu Sato* and *Iv
 
 To demonstrate the capabilities of Boogle, we have prepared a complete user story for you to follow. We listed all probable user statuses, beginning with the initial connection to the website and ending with the user's choosing to exit the website.
 
-1. A user types the URL into their browser and connects to our website. Our website's home page looks as follows:
+1.A user types the URL into their browser and connects to our website. Our website's home page looks as follows:
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.004.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.005.jpeg)
 
-2. The user types the desired content they want to search in the Search bar. Then they either click the Search button on the right of the search bar or press Enter key to search. In the user story, we use “Conan Doyle”.
+2.The user types the desired content they want to search in the Search bar. Then they either click the Search button on the right of the search bar or press Enter key to search. In the user story, we use “Conan Doyle”.
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.006.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.007.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
-3. The webpage will reload and send back the items that match. In “Conan Doyle” 
+3.The webpage will reload and send back the items that match. In “Conan Doyle” 
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)scenario, the first result is a sentence from a book that contains the phrase “Conan Doyle”. Then in the following, search engine shows some book results that were written by  Conan Doyle.
 
-3. If the user comes across some network problems, the search engine will load the 404 Not Found Page. 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.008.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.009.jpeg)
+
+4.If the user comes across some network problems, the search engine will load the 404 Not Found Page. 
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.010.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.011.jpeg)
 
-5. User can click the title of the book and the it will jump to the html page that belongs ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)to Gutenberg.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.012.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.013.png)
-5. The website could detect some spelling problems and indicate whether the users intended to misspell the words or whether they simply mistyped them. For example, the user might type "You know my metods, Watson." Clearly, the word metods is misspelt in this instance. The search engine will show “Searching results for You know my \*methods\*, Watson”. The words that have been highlighted with \* marks represent those that have been identified as misspelt by the search engine.
+5.User can click the title of the book and the it will jump to the html page that belongs ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)to Gutenberg.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.012.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.013.png)
 
-`![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.014.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.015.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
+6.The website could detect some spelling problems and indicate whether the users intended to misspell the words or whether they simply mistyped them. For example, the user might type "You know my metods, Watson." Clearly, the word metods is misspelt in this instance. The search engine will show “Searching results for You know my \*methods\*, Watson”. The words that have been highlighted with \* marks represent those that have been identified as misspelt by the search engine.
 
-7. If the user still wants to search for the quote they want, then they can click the ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)quote “Search instead for You know my metods, Watson” shown on the website. If the search engine is unable to locate any relevant results, it will display "No Match!" on the web page concerned.
+![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.014.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.015.png)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
+
+7.If the user still wants to search for the quote they want, then they can click the ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)quote “Search instead for You know my metods, Watson” shown on the website. If the search engine is unable to locate any relevant results, it will display "No Match!" on the web page concerned.
 
 ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.016.jpeg)![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.017.png)
 
-8. When a person has finished searching, they can just exit the page without further action.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
+8.When a person has finished searching, they can just exit the page without further action.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 **A small bonus service![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)**
 

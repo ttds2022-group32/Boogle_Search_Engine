@@ -1,16 +1,13 @@
-# Text Technologies for Data Science — Book Content Search Engine —BOOGLE
+# Text Technologies for Data Science — Book Content Search Engine — BOOGLE
+Ivan Sun; Yuanting Mao; Zhi Qi Lee; Yue Wang; Michitatsu Sato; Zhonghao Wen![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.001.png)
 
-**Environment**
+## **Environment**
 - React
 - FastAPI
 - MongoDB
 - Python packages (pymongo, nltk, etc.)
 
-**Coursework 3 Report**
-
-Group 32: Ivan Sun; Yuanting Mao; Zhi Qi Lee; Yue Wang; Michitatsu Sato; Zhonghao Wen![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.001.png)
-
-1. **Introduction**
+## 1.**Introduction**
 
 Our crew creates the search engine Boogle, which can be used to search books using a variety of keywords such as author, title and contents. Boogle uses a database of 12421637 documents scraped from the paragraphs of 9676 English fiction books, crawled from Project Gutenberg ([Gutenberg 2022). T](https://www.zotero.org/google-docs/?XSgYqN)he search engine can be accessed through the following URL link:
 
@@ -18,22 +15,22 @@ Website link: h[ttp://ttds-frontend-dot-axial-acrobat-338723.ew.r.appspot.com/](
 
 The following chapter will discuss the inspiration and uniqueness of our search engine. Afterwards, we will demonstrate all of the strategies that we implement in the preceding four chapters: Data Crawling & Scraping; Frontend; Cloud Hosting Server and Backend. In the [Appendix, ](#_page10_x72.00_y72.00)we present you with a user story that you can use to navigate through all of our services.
 
-2. **Motivation**
+## 2.**Motivation**
 
 While several common PDF readers allow us to search certain contents within a book, they do not yet allow users to search specific contents across many ebooks or throughout an entire database. On the Gutenburg website, despite the fact that it seems to provide us with a full-text search, the service actually relies on *Yahoo!*, *Google* and *DuckDuckGo* to search for the text but uses neither its own search engine nor its database. Our search engine, Boogle, offers the service of searching the specific contents in all the books kept in our database and listing all the contents that match the search query. It will be incredibly beneficial to users who wish to search for specific material across multiple books, for example, when they wish to verify a saying and wish to identify its location with the least effort.
 
-3. **Data Crawling and Scraping**
+## 3.**Data Crawling and Scraping**
 
 To prevent flooding the target website with requests, we opt not to request more than one piece of material at a time. To ensure that only one request is made at a time, we first run the crawler, which generates a list of the URLs to crawl, eliminating the need for a tree-like search throughout the crawling process. Additionally, we develop a crawler that saves the HTML source code when it receives a response from a website, enabling us to scrape the data offline. The contents are scraped mostly using the Python package BeautifulSoup4. We inspect the HTML's format and extract the information by recognising the HTMLattributes![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
 and tags that are related to it. The difficult task at hand is extracting paragraphs from ![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)HTML-formatted book content. Owing to the fact that each book page encodes paragraphs differently, we must pay special attention to the common aspect of the pattern utilised to represent these paragraphs. We begin by extracting all possible paragraphs using HTML tags and then filtering these paragraphs using our self-defined filtering method, which eliminates some noise that is included as paragraphs (like chapter number, etc.). The extracted data is immediately saved as structured JSON-style objects in our database. Due to the fact that the crawling and scraping processes are completely automated, scheduled scraping is feasible. Once the timer expires, the server will execute scripts that check to see whether any modifications have been made to the target website. Scripts will scrape the new contents whenever a change is detected.
 
-4. **Frontend**
+## 4.**Frontend**
 
 We create a frontend website from the ground up. JavaScript is used as the programming language. We use Tailwind CSS, which is a utility-first CSS framework for fast-developing custom user interfaces. When the frontend was completed, it was uploaded to a Google server using the gcloud service so that people could access it using a web browser. Due to the page constraint, we will not discuss the Frontend structure in detail because it is not directly connected to the course; instead, we will focus on the other components of this project. However, we will provide you with a comprehensive user story in the Appe[ndix ](#_page10_x72.00_y72.00)section, which will detail all of the frontend functions we have. You are also invited to test it out on our website.
 
-5. **Backend**
-1. **Server Design**
+## 5.**Backend**
+5.1.**Server Design**
 
 As stated above, we decide to use a more modern approach to design the front end-user interface. Our backend server does not need to render the HTML and send it back as content for the display. Since the process of rendering and displaying can be done by the front end, the only job needed for the backend server is to return the appropriate data according to requests from the front end application. Since the task is straightforward, we avoid using whole web frameworks like Django. Instead, we use FastAPI, which provides an API-based server for front-end communication. We design the server to only accept the GET methods to the specific URL(domain) of the server as APIcalls since we need to protect our database from malicious attacks that use HTTP methods like POST, DELETE, and PUT. The API is carefully separated according to its function. For example, the system is designed to access the default search API which includes the function of query correction and query expansion. Once the user decides not to use these functions, the front-end application will call another API of the backend server. In this way, dividing functions into different APIs enables the code to be shorter and simpler, also easy to maintain and modify. Theoretically, the server is able to handle multiple requests from multiple frontend clients.![](images/Aspose.Words.c31673e0-76fd-4872-9152-25280fe38596.002.png)
 
